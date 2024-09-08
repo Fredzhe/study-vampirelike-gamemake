@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://ccqnars1aedbt"]
+[gd_scene load_steps=2 format=3 uid="uid://c4oracrqk7p00"]
 
-[node name="ExperienceBar" type="Node"]
+[ext_resource type="Script" path="res://scenes/UI/experience_bar.gd" id="1_m771l"]
+
+[node name="ExperienceBar" type="CanvasLayer"]
+script = ExtResource("1_m771l")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -14,7 +17,6 @@ mouse_filter = 2
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 8
-mouse_filter = 2
 max_value = 1.0
 value = 0.5
 show_percentage = false
