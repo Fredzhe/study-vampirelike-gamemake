@@ -9,7 +9,8 @@ signal upgrade_selected(upgrade: AbilityUpgrade)
 
 func _ready():
 	get_tree().paused = true
-
+	
+	
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 	for upgrade in upgrades:
 		var card_instance = upgrade_card_scene.instantiate()
