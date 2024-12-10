@@ -8,8 +8,8 @@ func _ready():
 	
 
 func set_defeat():
-	$%TitleLabel.text = "Defeat"
-	$%DescriptionLabel.text = "You lost!"
+	$%TitleLabel.text = "失败！"
+	$%DescriptionLabel.text = "你输了！"
 	
 func on_restart_button_pressed():
 	get_tree().paused = false

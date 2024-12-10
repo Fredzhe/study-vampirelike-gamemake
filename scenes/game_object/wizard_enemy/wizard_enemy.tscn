@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cufj0hw0rrch6"]
+[gd_scene load_steps=16 format=3 uid="uid://cufj0hw0rrch6"]
 
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_bkdbt"]
 [ext_resource type="PackedScene" uid="uid://d3q17hlhfgko3" path="res://scenes/component/health_component.tscn" id="1_nniuv"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://g7b5lcxtuxv7" path="res://scenes/component/velocity_component.tscn" id="3_k51ah"]
 [ext_resource type="PackedScene" uid="uid://c7af5dhftxpxe" path="res://scenes/component/hurtbox_component.tscn" id="4_ij467"]
 [ext_resource type="PackedScene" uid="uid://q31rjq8vcwnv" path="res://scenes/component/vial_drop_component.tscn" id="4_lbymr"]
+[ext_resource type="PackedScene" uid="uid://drxfb8r0tcjdh" path="res://scenes/component/hit_flash_component.tscn" id="5_cwrxi"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_d84fv"]
 
 [sub_resource type="Animation" id="Animation_55amc"]
 length = 0.8
@@ -94,6 +96,11 @@ _data = {
 "walk": SubResource("Animation_xfbch")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35rk8"]
+resource_local_to_scene = true
+shader = ExtResource("6_d84fv")
+shader_parameter/lerp_percent = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_wu268"]
 radius = 8.0
 
@@ -119,6 +126,11 @@ acceleration = 100.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_lbymr")]
 health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_cwrxi")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_35rk8")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_7yl1p")]
 health_component = NodePath("../HealthComponent")

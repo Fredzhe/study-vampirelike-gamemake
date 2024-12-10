@@ -16,7 +16,7 @@ func tween_collect(percent: float, start_position: Vector2):
 
 
 func collect():
-	#GameEvent.emit_experience_vial_collected(1)
+	GameEvent.emit_experience_vial_collected(1)
 	queue_free()
 
 func disable_collision():

@@ -2,6 +2,18 @@
 学习视频教学《Create a Complete 2D Survivors Style Game in Godot 4》，记录点滴，备份文档。
 
 ## 版本更新
+### V0.0.45 2024.12.10（P46 1:50）
+
+* 添加了伤害数字显示。
+* 添加了命中怪物的特效：闪白。
+* 修改了字体，为了适配中文，使用字体VonwaonBitmap。
+* 将所有文本汉化。
+* 调整了字体显示大小和位置。
+
+### V0.0.43 2024.12.4
+
+* 应用了新的字体Rockboxcond12（来自[Nb Pixel Font Bundle](https://nimblebeastscollective.itch.io/nb-pixel-font-bundle)），美化UI倒计时。
+
 ### V0.0.42 2024.12.3
 
 * 为巫师制作了简易普通动画。

@@ -8,5 +8,5 @@ script = ExtResource("2_y5qxo")
 ability_controller_scene = ExtResource("1_sc7k8")
 id = "axe"
 max_quantity = 1
-name = "Axe"
+name = "投斧"
 description = "每隔一段时间发射一把绕自身旋转的斧头。"

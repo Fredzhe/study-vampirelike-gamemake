@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cv66pkf0c3nmx"]
+
+[ext_resource type="FontFile" uid="uid://cwhyi2kwsekuu" path="res://resources/theme/VonwaonBitmap-16px.ttf" id="1_d1smb"]
+
+[resource]
+default_font = ExtResource("1_d1smb")
