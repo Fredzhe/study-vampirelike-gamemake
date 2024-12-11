@@ -7,4 +7,4 @@ script = ExtResource("1_ba57m")
 id = "axe_damage"
 max_quantity = 10
 name = "投斧 伤害+"
-description = "投斧的伤害提高15%。"
+description = "投斧的伤害提高10%。"

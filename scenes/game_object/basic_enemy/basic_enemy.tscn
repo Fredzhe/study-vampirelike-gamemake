@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://csxda3tqqj2dl"]
+[gd_scene load_steps=16 format=3 uid="uid://csxda3tqqj2dl"]
 
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_8jyms"]
 [ext_resource type="PackedScene" uid="uid://d3q17hlhfgko3" path="res://scenes/component/health_component.tscn" id="2_3erha"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c7af5dhftxpxe" path="res://scenes/component/hurtbox_component.tscn" id="4_ed3es"]
 [ext_resource type="PackedScene" uid="uid://bqgg547yab1bu" path="res://scenes/component/death_component.tscn" id="4_hchjg"]
 [ext_resource type="PackedScene" uid="uid://drxfb8r0tcjdh" path="res://scenes/component/hit_flash_component.tscn" id="5_ex5o6"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_81n2k"]
 
 [sub_resource type="Animation" id="Animation_ys2fo"]
 length = 0.001
@@ -71,6 +72,11 @@ _data = {
 "walk": SubResource("Animation_cpqa1")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w36y3"]
+resource_local_to_scene = true
+shader = ExtResource("6_81n2k")
+shader_parameter/lerp_percent = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsrkb"]
 radius = 12.0
 
@@ -100,6 +106,7 @@ acceleration = 100.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_ex5o6")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_w36y3")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_hchjg")]
 health_component = NodePath("../HealthComponent")
