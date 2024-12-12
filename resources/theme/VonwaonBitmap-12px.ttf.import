@@ -2,25 +2,25 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cwhyi2kwsekuu"
-path="res://.godot/imported/VonwaonBitmap-16px.ttf-ef2cbaf006eef4cc15253adc0f6d9657.fontdata"
+uid="uid://ctyuhboc1lp25"
+path="res://.godot/imported/VonwaonBitmap-12px.ttf-a011c41b349fda232c7e830636f9ce9a.fontdata"
 
 [deps]
 
-source_file="res://resources/theme/VonwaonBitmap-16px.ttf"
-dest_files=["res://.godot/imported/VonwaonBitmap-16px.ttf-ef2cbaf006eef4cc15253adc0f6d9657.fontdata"]
+source_file="res://resources/theme/VonwaonBitmap-12px.ttf"
+dest_files=["res://.godot/imported/VonwaonBitmap-12px.ttf-a011c41b349fda232c7e830636f9ce9a.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=2
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=1
+hinting=0
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null

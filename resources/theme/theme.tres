@@ -1,6 +1,42 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cv66pkf0c3nmx"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cv66pkf0c3nmx"]
 
+[ext_resource type="Texture2D" uid="uid://du11dmkm4g1js" path="res://assets/ui/ui.png" id="1_0bg2i"]
 [ext_resource type="FontFile" uid="uid://cwhyi2kwsekuu" path="res://resources/theme/VonwaonBitmap-16px.ttf" id="1_d1smb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t4mu2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_0bg2i")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8hr7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvts0"]
+texture = ExtResource("1_0bg2i")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 16, 16)
 
 [resource]
 default_font = ExtResource("1_d1smb")
+AlternatePanelContainer/base_type = &"PanelContainer"
+AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_t4mu2")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/styles/normal = SubResource("StyleBoxEmpty_m8hr7")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_lvts0")
