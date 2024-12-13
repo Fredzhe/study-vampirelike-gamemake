@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bh84jw6ewcxw0"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_flu8d"]
+
+[resource]
+script = ExtResource("1_flu8d")
+id = "sword_rate"
+max_quantity = 5
+name = "剑 攻速+"
+description = "剑的攻击速度提高10%。"

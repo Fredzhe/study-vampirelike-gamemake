@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_n2q00")
-id = "sword_rate"
-max_quantity = 5
-name = "剑 攻速+"
-description = "剑的攻击速度提高10%。"
+id = "player_speed"
+max_quantity = 2
+name = "移动速度+"
+description = "角色的移动速度提高10%"
