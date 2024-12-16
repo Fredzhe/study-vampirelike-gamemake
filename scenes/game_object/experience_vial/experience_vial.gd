@@ -25,7 +25,7 @@ func disable_collision():
 	
 func on_area_entered(other_area: Area2D):
 	Callable(disable_collision).call_deferred()
-	
+	$RandomAudioStreamPlayer2DComponent.play_random()
 	var tween = create_tween()
 	tween.tween_method(tween_collect.bind(global_position), 0.0, 1.0, .5)\
 	.set_ease(Tween.EASE_IN)\

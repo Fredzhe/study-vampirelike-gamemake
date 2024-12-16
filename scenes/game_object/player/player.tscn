@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://6uite7nfa62y"]
+[gd_scene load_steps=16 format=3 uid="uid://6uite7nfa62y"]
 
 [ext_resource type="Texture2D" uid="uid://lbaml16jf6cd" path="res://scenes/game_object/player/player.png" id="1_4rk3m"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_pvodv"]
 [ext_resource type="PackedScene" uid="uid://d3q17hlhfgko3" path="res://scenes/component/health_component.tscn" id="2_n00lq"]
 [ext_resource type="PackedScene" uid="uid://dua4xcffkykfy" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_pvssm"]
 [ext_resource type="PackedScene" uid="uid://g7b5lcxtuxv7" path="res://scenes/component/velocity_component.tscn" id="3_maj88"]
+[ext_resource type="PackedScene" uid="uid://l6kbt384fhe3" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="6_ehdch"]
+[ext_resource type="AudioStream" uid="uid://bdivd8q5827w" path="res://assets/audio/impactMining_004.ogg" id="7_yyjyd"]
 
 [sub_resource type="Animation" id="Animation_qeaq1"]
 length = 0.001
@@ -177,3 +179,6 @@ offset = Vector2(0, -8)
 visible = false
 position = Vector2(0, -5.045)
 shape = SubResource("CircleShape2D_knbbq")
+
+[node name="RandomAudioStreamPlayer2DComponent" parent="." instance=ExtResource("6_ehdch")]
+streams = Array[AudioStream]([ExtResource("7_yyjyd")])

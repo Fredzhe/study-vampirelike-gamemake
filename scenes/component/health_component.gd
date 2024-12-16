@@ -16,7 +16,6 @@ func damage(damage_amount: float):
 	health_changed.emit()
 	Callable(check_death).call_deferred()
 
-
 func get_health_percent():
 	if max_health <= 0:
 		return 0
