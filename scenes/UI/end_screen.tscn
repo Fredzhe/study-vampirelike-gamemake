@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cckkyv04cgcer"]
+[gd_scene load_steps=9 format=3 uid="uid://cckkyv04cgcer"]
 
 [ext_resource type="Script" path="res://scenes/UI/end_screen.gd" id="1_65835"]
+[ext_resource type="AudioStream" uid="uid://c8xt5auhsl0rp" path="res://assets/audio/jingles_Defeat.ogg" id="2_6dtjl"]
+[ext_resource type="PackedScene" uid="uid://dgqksfkxenvo6" path="res://scenes/UI/sound_button.tscn" id="2_wcqwu"]
+[ext_resource type="AudioStream" uid="uid://dvm2cvrlaqhvs" path="res://assets/audio/jingles_Victory.ogg" id="3_v6tmk"]
 
 [sub_resource type="Animation" id="Animation_02boi"]
 length = 0.001
@@ -61,6 +64,14 @@ _data = {
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_65835")
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6dtjl")
+volume_db = -5.0
+
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v6tmk")
+volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -126,12 +137,12 @@ text = "你赢了!"
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_wcqwu")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "重新开始"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_wcqwu")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "退出游戏"
