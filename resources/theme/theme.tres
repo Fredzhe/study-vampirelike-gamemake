@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cv66pkf0c3nmx"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://cv66pkf0c3nmx"]
 
 [ext_resource type="Texture2D" uid="uid://du11dmkm4g1js" path="res://assets/ui/ui.png" id="1_0bg2i"]
 [ext_resource type="FontFile" uid="uid://cwhyi2kwsekuu" path="res://resources/theme/VonwaonBitmap-16px.ttf" id="1_d1smb"]
@@ -41,6 +41,25 @@ texture_margin_right = 3.0
 texture_margin_bottom = 3.0
 region_rect = Rect2(4, 20, 8, 8)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rxsr4"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2mu8g"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kax1"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epvjs"]
+bg_color = Color(0.458824, 0.890196, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kyhac"]
+content_margin_left = 2.0
+content_margin_top = 6.0
+content_margin_right = 2.0
+content_margin_bottom = 6.0
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8hr7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lvts0"]
@@ -66,6 +85,7 @@ border_color = Color(0.247059, 0.14902, 0.192157, 1)
 default_font = ExtResource("1_d1smb")
 AlternatePanelContainer/base_type = &"PanelContainer"
 AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_t4mu2")
+BlueOutlineLabel/base_type = &"Label"
 Button/colors/font_color = Color(0.247059, 0.14902, 0.192157, 1)
 Button/colors/font_focus_color = Color(0.193105, 0.112238, 0.147845, 1)
 Button/colors/font_hover_color = Color(0.741176, 0.423529, 0.290196, 1)
@@ -74,6 +94,11 @@ Button/styles/focus = SubResource("StyleBoxEmpty_pmabi")
 Button/styles/hover = SubResource("StyleBoxTexture_l3jyq")
 Button/styles/normal = SubResource("StyleBoxTexture_eb7us")
 Button/styles/pressed = SubResource("StyleBoxTexture_1xbdv")
+HSlider/icons/grabber = SubResource("PlaceholderTexture2D_rxsr4")
+HSlider/icons/grabber_highlight = SubResource("PlaceholderTexture2D_2mu8g")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_2kax1")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_epvjs")
+HSlider/styles/slider = SubResource("StyleBoxFlat_kyhac")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)

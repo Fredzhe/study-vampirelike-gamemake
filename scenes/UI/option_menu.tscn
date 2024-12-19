@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dgqksfkxenvo6" path="res://scenes/UI/sound_button.tscn" id="2_p0cx1"]
 
 [node name="OptionMenu" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_muff1")
 
 [node name="TileMap" type="TileMap" parent="."]
