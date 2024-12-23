@@ -9,9 +9,15 @@ func _ready():
 	
 
 func on_play_pressed():
+	#ScreenTransition.transition()
+	#await ScreenTransition.transitioned_halfway
+	
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 	
 func on_option_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	
 	var option_instance = option_scene.instantiate()
 	add_child(option_instance)
 	option_instance.back_pressed.connect(on_option_closed.bind(option_instance))

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://daq1o14fig3l"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_cgjes"]
+
+[resource]
+script = ExtResource("1_cgjes")
+id = "experience_gain"
+max_quantity = 1
+title = "经验掉落率+"
+description = "每一级使经验掉落率提升10%"
