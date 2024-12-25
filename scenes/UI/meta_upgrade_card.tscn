@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://e5c8ggpd2v13"]
+[gd_scene load_steps=21 format=3 uid="uid://e5c8ggpd2v13"]
 
 [ext_resource type="Script" path="res://scenes/UI/meta_upgrade_card.gd" id="1_k23v8"]
 [ext_resource type="PackedScene" uid="uid://6sml35g6ae3d" path="res://scenes/component/audio_player_component.tscn" id="2_w756p"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://qyi28knk2owd" path="res://assets/audio/switch10.ogg" id="12_2ojf8"]
 [ext_resource type="Texture2D" uid="uid://b70rimtrkxxpa" path="res://scenes/game_object/experience_vial/experience_vial.png" id="13_wmw7d"]
 [ext_resource type="PackedScene" uid="uid://dgqksfkxenvo6" path="res://scenes/UI/sound_button.tscn" id="14_rcy4p"]
+[ext_resource type="Texture2D" uid="uid://rceg7uljpmxy" path="res://assets/ui/upgrade_tall.png" id="14_xu5gx"]
 
 [sub_resource type="Animation" id="Animation_shnal"]
 length = 0.001
@@ -102,69 +103,6 @@ _data = {
 "selected": SubResource("Animation_diyx1")
 }
 
-[sub_resource type="Animation" id="Animation_ov64l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HoverPlayerComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_m80q6"]
-resource_name = "hover"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.0872665, 0.0872665, 0.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HoverPlayerComponent")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_random"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4tc3"]
-_data = {
-"RESET": SubResource("Animation_ov64l"),
-"hover": SubResource("Animation_m80q6")
-}
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uju2e"]
 content_margin_top = 4.0
 content_margin_bottom = 4.0
@@ -175,16 +113,22 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="MetaUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
-custom_minimum_size = Vector2(120, 160)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujfsl"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.458824, 0.890196, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
+custom_minimum_size = Vector2(150, 180)
 offset_right = 120.0
 offset_bottom = 160.0
 pivot_offset = Vector2(60, 80)
 script = ExtResource("1_k23v8")
-
-[node name="HoverPlayerComponent" parent="." instance=ExtResource("2_w756p")]
-volume_db = -15.0
-streams = Array[AudioStream]([ExtResource("3_3h8c5"), ExtResource("4_m3yed"), ExtResource("5_dof4n"), ExtResource("6_aqwgv"), ExtResource("7_4nrem"), ExtResource("8_7vg04"), ExtResource("9_4ng1i"), ExtResource("10_xy70u"), ExtResource("11_5x7pq"), ExtResource("12_2ojf8")])
 
 [node name="ClickPlayerComponent" parent="." instance=ExtResource("2_w756p")]
 volume_db = 4.0
@@ -193,11 +137,6 @@ streams = Array[AudioStream]([ExtResource("3_3h8c5"), ExtResource("4_m3yed"), Ex
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_eiv0d")
-}
-
-[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_i4tc3")
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -209,46 +148,56 @@ theme_override_constants/margin_bottom = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="DescribeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/DescribeContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_type_variation = &"AlternatePanelContainer"
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/DescribeContainer/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_constants/outline_size = 8
-text = "这是升级卡"
+text = "这是永久升级卡"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/DescribeContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.277342, 0.308277, 0.460637, 1)
 theme_override_colors/font_outline_color = Color(0.277342, 0.308277, 0.460637, 1)
 theme_override_constants/outline_size = 8
-text = "这是升级卡的内容"
+text = "这是永久升级卡的内容"
 autowrap_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="PurchaseContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PurchaseContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_uju2e")
 max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer/Control"]
 layout_mode = 2
 offset_left = -7.0
 offset_top = -5.0
@@ -256,11 +205,43 @@ offset_right = 9.0
 offset_bottom = 11.0
 texture = ExtResource("13_wmw7d")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/PurchaseContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_type_variation = &"BlueOutlineLabel"
-text = "50/200"
+text = "50/100"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/PurchaseContainer"]
+layout_mode = 2
+
+[node name="LevelBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_ujfsl")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/PurchaseContainer/MarginContainer2/Control"]
+layout_mode = 2
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 9.0
+offset_bottom = 13.0
+texture = ExtResource("14_xu5gx")
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer/PurchaseContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"BlueOutlineLabel"
+text = "50/100"
 
 [node name="PurchaseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("14_rcy4p")]
 unique_name_in_owner = true

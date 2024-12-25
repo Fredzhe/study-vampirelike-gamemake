@@ -4,6 +4,7 @@ var option_scene = preload("res://scenes/UI/option_menu.tscn")
 
 func _ready():
 	$%PlayButton.pressed.connect(on_play_pressed)
+	$%UpgradeButton.pressed.connect(on_upgrade_pressed)
 	$%OptionButton.pressed.connect(on_option_pressed)
 	$%QuitButton.pressed.connect(on_quit_pressed)
 	
@@ -28,3 +29,6 @@ func on_quit_pressed():
 
 func on_option_closed(option_insteance: Node):
 	option_insteance.queue_free()
+
+func on_upgrade_pressed():
+	get_tree().change_scene_to_file("res://scenes/UI/meta_menu.tscn")

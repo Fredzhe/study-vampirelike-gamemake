@@ -6,6 +6,11 @@ var weight_sum = 0
 func add_item(item, weight: int):
 	items.append({"item": item, "weight": weight})
 	weight_sum += weight
+
+
+func add_item_with_rarity(item):
+	items.append({"item": item, "weight": item.get_weight()})
+	weight_sum += item.get_weight()
 	
 	
 func remove_item(item_to_remove):

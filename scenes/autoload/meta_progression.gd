@@ -5,10 +5,9 @@ const SAVE_FILE_PATH = "user://game.save"
 var save_data: Dictionary = {
 	"win_count": 0,
 	"loss_count": 0,
-	"upgrade_currency": 0,
+	"meta_upgrade_currency": 0,
 	"meta_upgrades": { }
 	}
-
 
 
 func _ready():
@@ -33,8 +32,13 @@ func add_meta_upgrade(upgrade: MetaUpgrade):
 		}
 	
 	save_data["meta_upgrades"][upgrade.id]["quantity"] =+ 1
+	save()
 
+func get_upgrade_count(upgrade_id: String):
+	if save_data["meta_upgrades"].has(upgrade_id):
+		return save_data["meta_upgrades"][upgrade_id]["quantity"]
+	return 0
 
 func on_experience_collected(number: float):
-	save_data["upgrade_currency"] += number
+	save_data["meta_upgrade_currency"] += number
 	

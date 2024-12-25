@@ -15,7 +15,12 @@ run/main_scene="res://scenes/UI/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Arena999"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.193105, 0.112238, 0.147845, 1)
+boot_splash/image="res://icon.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

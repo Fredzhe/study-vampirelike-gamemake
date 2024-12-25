@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_flu8d")
-id = "sword_rate"
+id = "player_speed"
 max_quantity = 5
-name = "剑 攻速+"
-description = "剑的攻击速度提高10%。"
+rarity = "稀有"
+name = "自由斗篷"
+description = "玩家的移动速度提高10%"

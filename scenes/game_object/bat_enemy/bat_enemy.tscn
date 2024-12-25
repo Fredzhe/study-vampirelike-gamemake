@@ -1,0 +1,146 @@
+[gd_scene load_steps=22 format=3 uid="uid://cr7w0kxd8gm6k"]
+
+[ext_resource type="Script" path="res://scenes/game_object/bat_enemy/bat_enemy.gd" id="1_kw5lf"]
+[ext_resource type="PackedScene" uid="uid://d3q17hlhfgko3" path="res://scenes/component/health_component.tscn" id="2_5chc8"]
+[ext_resource type="PackedScene" uid="uid://q31rjq8vcwnv" path="res://scenes/component/vial_drop_component.tscn" id="3_m5m17"]
+[ext_resource type="PackedScene" uid="uid://g7b5lcxtuxv7" path="res://scenes/component/velocity_component.tscn" id="4_xi5r6"]
+[ext_resource type="PackedScene" uid="uid://drxfb8r0tcjdh" path="res://scenes/component/hit_flash_component.tscn" id="5_7wxpk"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_3kbvr"]
+[ext_resource type="PackedScene" uid="uid://bqgg547yab1bu" path="res://scenes/component/death_component.tscn" id="7_31x7q"]
+[ext_resource type="PackedScene" uid="uid://c7af5dhftxpxe" path="res://scenes/component/hurtbox_component.tscn" id="8_7y70f"]
+[ext_resource type="Texture2D" uid="uid://5hatagon3rla" path="res://scenes/game_object/bat_enemy/bat_enemy.png" id="9_wxuaf"]
+[ext_resource type="PackedScene" uid="uid://l6kbt384fhe3" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="10_calsj"]
+[ext_resource type="AudioStream" uid="uid://b78hbihkaqfym" path="res://assets/audio/footstep_carpet_000.ogg" id="11_sxpbo"]
+[ext_resource type="AudioStream" uid="uid://bkidsnu4gh8kw" path="res://assets/audio/footstep_carpet_001.ogg" id="12_6gkey"]
+[ext_resource type="AudioStream" uid="uid://d0kyb6r4ax1y7" path="res://assets/audio/footstep_carpet_002.ogg" id="13_pq7op"]
+[ext_resource type="AudioStream" uid="uid://dexx3vy2w4dr8" path="res://assets/audio/footstep_carpet_003.ogg" id="14_vbw6o"]
+[ext_resource type="AudioStream" uid="uid://qvwvblkfrr83" path="res://assets/audio/footstep_carpet_004.ogg" id="15_tdc6o"]
+
+[sub_resource type="Animation" id="Animation_ys2fo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cpqa1"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1, 0), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0, 0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbjxt"]
+_data = {
+"RESET": SubResource("Animation_ys2fo"),
+"walk": SubResource("Animation_cpqa1")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w36y3"]
+resource_local_to_scene = true
+shader = ExtResource("6_3kbvr")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vsrkb"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xs8nk"]
+radius = 5.0
+
+[node name="BatEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_kw5lf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbjxt")
+}
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_5chc8")]
+max_health = 25.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_m5m17")]
+drop_percent = 1.0
+health_component = NodePath("../HealthComponent")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_xi5r6")]
+max_speed = 100
+acceleration = 1.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_7wxpk")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_w36y3")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_31x7q")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_7y70f")]
+visible = false
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_vsrkb")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("9_wxuaf")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_xs8nk")
+
+[node name="HitRandomAudioPlayerComponent" parent="." instance=ExtResource("10_calsj")]
+max_distance = 300.0
+bus = &"sfx"
+streams = Array[AudioStream]([ExtResource("11_sxpbo"), ExtResource("12_6gkey"), ExtResource("13_pq7op"), ExtResource("14_vbw6o"), ExtResource("15_tdc6o")])

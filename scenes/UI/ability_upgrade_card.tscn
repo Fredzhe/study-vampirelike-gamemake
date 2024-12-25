@@ -264,9 +264,10 @@ vertical_alignment = 2
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.277342, 0.308277, 0.460637, 1)
 theme_override_colors/font_outline_color = Color(0.277342, 0.308277, 0.460637, 1)
 theme_override_constants/outline_size = 8
 text = "这是升级卡的内容"
-autowrap_mode = 2
+autowrap_mode = 1

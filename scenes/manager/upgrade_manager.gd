@@ -15,12 +15,13 @@ var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
 
 
 func _ready():
-	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_sword_rate, 10)
-	upgrade_pool.add_item(upgrade_sword_damage, 10)
-	upgrade_pool.add_item(upgrade_player_speed, 10)
+	upgrade_pool.add_item_with_rarity(upgrade_axe)
+	upgrade_pool.add_item_with_rarity(upgrade_sword_rate)
+	upgrade_pool.add_item_with_rarity(upgrade_sword_damage)
+	upgrade_pool.add_item_with_rarity(upgrade_player_speed)
 	
 	experience_manager.level_up.connect(on_level_up)
+
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_axe.id:

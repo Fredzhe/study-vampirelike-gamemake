@@ -125,12 +125,13 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_nniuv")]
-max_health = 30.0
+max_health = 40.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_k51ah")]
 acceleration = 100.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_lbymr")]
+drop_percent = 0.7
 health_component = NodePath("../HealthComponent")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_cwrxi")]

@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_6k7a5")
 id = "sword_damage"
-max_quantity = 10
-name = "剑 伤害+"
+max_quantity = 5
+rarity = "稀有"
+name = "锋利剑"
 description = "剑的伤害提高15%。"
