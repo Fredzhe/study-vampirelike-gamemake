@@ -23,19 +23,21 @@ func set_meta_upgrade(upgrade: MetaUpgrade):
 
 
 func update_progress():
-	var current_quantity = 0
+	var current_quantity: float = 0
 	if MetaProgression.save_data["meta_upgrades"].has(upgrade.id):
 		current_quantity = MetaProgression.save_data["meta_upgrades"][upgrade.id]["quantity"]
 		
 	var is_maxed = current_quantity == upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
-	var purchase_percent = currency / upgrade.cost
-	var level_percent = current_quantity / upgrade.max_quantity
+	var purchase_percent: float = currency / upgrade.cost
+	var level_percent: float = current_quantity / upgrade.max_quantity
 	
 	purchase_percent = min(purchase_percent, 1)
 	progress_bar.value = purchase_percent
 	
 	level_percent = min(level_percent, 1)
+	
+	print(level_percent)
 	level_bar.value = level_percent
 	
 	purchase_button.disabled = purchase_percent < 1 || is_maxed

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://b3dmjwl4sga25"]
+
+[ext_resource type="PackedScene" uid="uid://uesikirfo4jw" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_5vo75"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_e3t2k"]
+
+[resource]
+script = ExtResource("2_e3t2k")
+ability_controller_scene = ExtResource("1_5vo75")
+id = "anvil"
+max_quantity = 1
+rarity = "稀有"
+name = "铁砧"
+description = "在玩家周围随机砸下铁砧，造成大量伤害。"

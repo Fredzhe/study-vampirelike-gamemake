@@ -12,12 +12,15 @@ var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
-
+var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
 
 func _ready():
 	upgrade_pool.add_item_with_rarity(upgrade_axe)
+	upgrade_pool.add_item_with_rarity(upgrade_anvil)
+	
 	upgrade_pool.add_item_with_rarity(upgrade_sword_rate)
 	upgrade_pool.add_item_with_rarity(upgrade_sword_damage)
+	
 	upgrade_pool.add_item_with_rarity(upgrade_player_speed)
 	
 	experience_manager.level_up.connect(on_level_up)

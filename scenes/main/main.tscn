@@ -50,8 +50,9 @@ y_sort_enabled = true
 [node name="ExperienceVial" parent="Entities" instance=ExtResource("11_uq3a5")]
 position = Vector2(401, 173)
 
-[node name="Player" parent="Entities" instance=ExtResource("1_1l16g")]
+[node name="Player" parent="Entities" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_1l16g")]
 unique_name_in_owner = true
 position = Vector2(326, 180)
+arena_time_manager = NodePath("../../ArenaTimeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

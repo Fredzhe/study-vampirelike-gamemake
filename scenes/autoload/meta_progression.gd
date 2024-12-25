@@ -12,6 +12,7 @@ var save_data: Dictionary = {
 
 func _ready():
 	GameEvent.experience_vial_collected.connect(on_experience_collected)
+	on_experience_collected(1000)
 	load_save_file()
 	
 func load_save_file():
@@ -31,7 +32,7 @@ func add_meta_upgrade(upgrade: MetaUpgrade):
 			"quantity": 0
 		}
 	
-	save_data["meta_upgrades"][upgrade.id]["quantity"] =+ 1
+	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
 	save()
 
 func get_upgrade_count(upgrade_id: String):

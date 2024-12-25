@@ -24,15 +24,16 @@ func get_spawn_position():
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
 		return Vector2.ZERO
-	
+
 	var spawn_position = Vector2.ZERO
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0,TAU))
 	
 	for i in 4:
 		
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
+		var spawn_offset = random_direction * 20
 		
-		var query_paramaters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0)
+		var query_paramaters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + spawn_offset, 1 << 0)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_paramaters)
 		
 		if result.is_empty():

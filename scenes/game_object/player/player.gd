@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var arena_time_manager: Node
+
 @onready var damage_interal_timer = $DamageIntervalTimer
 @onready var health_component = $HealthComponent
 @onready var health_bar = $HealthBar
@@ -17,10 +19,12 @@ var base_speed = 0
 func _ready():
 	base_speed = velocity_component.max_speed
 	
+	arena_time_manager.arena_difficulty_increased.connect(on_difficulty_increased)
+	
 	$CollisionArea2D.body_entered.connect(on_body_entered)
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interal_timer.timeout.connect(on_damage_interval_timer_timeout)
-	health_component.health_changed.connect(on_health_changed)
+	health_component.health_decreased.connect(on_health_decreased)
 	GameEvent.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 	
@@ -76,7 +80,7 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 
-func on_health_changed():
+func on_health_decreased():
 	$RandomAudioStreamPlayer2DComponent.play_random()
 	GameEvent.emit_player_damaged()
 	update_health_display()
@@ -87,3 +91,19 @@ func on_ability_upgrade_added(ability_upgrade:AbilityUpgrade, current_upgrades:D
 		abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
+
+func on_difficulty_increased(difficulty: int):
+	var interval = 0
+	var health_regeneration_level = MetaProgression.get_upgrade_count("health_regeneration")
+	
+	if health_regeneration_level > 0:
+		match(health_regeneration_level):
+			1:
+				interval = 6
+			2:
+				interval = 5
+			3:
+				interval = 4
+		var is_health_regeneration_time = (difficulty % interval) == 0
+		if is_health_regeneration_time:
+			health_component.heal(1)
