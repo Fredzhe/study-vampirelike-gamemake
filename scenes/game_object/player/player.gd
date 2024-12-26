@@ -25,6 +25,8 @@ func _ready():
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interal_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_decreased.connect(on_health_decreased)
+	health_component.health_changed.connect(on_health_changed)
+	
 	GameEvent.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 	
@@ -84,14 +86,22 @@ func on_health_decreased():
 	$RandomAudioStreamPlayer2DComponent.play_random()
 	GameEvent.emit_player_damaged()
 	update_health_display()
+	
+func on_health_changed():
+	update_health_display()
 
 func on_ability_upgrade_added(ability_upgrade:AbilityUpgrade, current_upgrades:Dictionary):
 	if ability_upgrade is Ability:
 		var ability = ability_upgrade as Ability
 		abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
+		
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
-
+	
+	elif ability_upgrade.id == "player_health":
+		health_component.max_health += 5
+		health_component.heal(5)
+		
 func on_difficulty_increased(difficulty: int):
 	var interval = 0
 	var health_regeneration_level = MetaProgression.get_upgrade_count("health_regeneration")

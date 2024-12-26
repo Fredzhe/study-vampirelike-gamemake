@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://boqqu5g7ssmln"]
+
+[ext_resource type="PackedScene" uid="uid://uesikirfo4jw" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_x7mqu"]
+[ext_resource type="Script" path="res://resources/upgrades/ability.gd" id="2_bs6hy"]
+
+[resource]
+script = ExtResource("2_bs6hy")
+ability_controller_scene = ExtResource("1_x7mqu")
+id = "anvil_count"
+max_quantity = 2
+rarity = "史诗"
+name = "更多铁砧"
+description = "增加一个铁砧"

@@ -8,4 +8,5 @@ id = "health_regeneration"
 max_quantity = 3
 cost = 10
 name = "再生"
-description = "每30秒回复1点生命值"
+description = "每30秒回复1点生命值，每升一级减少5秒间隔。"
+level_description = ["无", "30秒回复1点生命", "25秒回复1点生命", "20秒回复1点生命"]

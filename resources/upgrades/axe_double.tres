@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://djpuu0bhjmpog"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_eu5b5"]
+
+[resource]
+script = ExtResource("1_eu5b5")
+id = "axe_double"
+max_quantity = 1
+rarity = "传说"
+name = "双生投斧"
+description = "双倍投斧,
+双倍快乐"

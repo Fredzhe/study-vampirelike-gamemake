@@ -43,7 +43,7 @@ text = "升级"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(400, 230)
+custom_minimum_size = Vector2(400, 260)
 layout_mode = 2
 
 [node name="GridContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]

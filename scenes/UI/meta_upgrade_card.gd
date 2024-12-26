@@ -1,6 +1,5 @@
 extends PanelContainer
 
-
 @onready var name_label: Label = $%NameLabel
 @onready var description_label: Label = $%DescriptionLabel
 @onready var purchase_button = %PurchaseButton
@@ -18,9 +17,11 @@ func _ready():
 func set_meta_upgrade(upgrade: MetaUpgrade):
 	self.upgrade = upgrade
 	name_label.text = upgrade.name
-	description_label.text = upgrade.description
+	
+	description_label.text = upgrade.description + "\n" \
+	+ "当前:" + upgrade.current_level_description()
+	
 	update_progress()
-
 
 func update_progress():
 	var current_quantity: float = 0

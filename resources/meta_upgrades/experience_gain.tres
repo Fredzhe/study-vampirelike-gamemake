@@ -9,3 +9,4 @@ max_quantity = 1
 cost = 10
 name = "经验掉落率"
 description = "每一级使经验掉落率提升10%"
+level_description = Array[String](["无", "提升10%"])

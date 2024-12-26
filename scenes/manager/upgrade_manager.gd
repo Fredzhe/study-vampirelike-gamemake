@@ -8,11 +8,18 @@ var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
 
 var upgrade_axe = preload("res://resources/upgrades/axe.tres")
+var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
+
 var upgrade_axe_damage = preload("res://resources/upgrades/axe_damage.tres")
+var upgrade_axe_double = preload("res://resources/upgrades/axe_double.tres")
+
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
+
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
-var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
+var upgrade_player_health = preload("res://resources/upgrades/player_health.tres")
+
+var upgrade_anvil_count = preload("res://resources/upgrades/anvil_count.tres")
 
 func _ready():
 	upgrade_pool.add_item_with_rarity(upgrade_axe)
@@ -22,14 +29,18 @@ func _ready():
 	upgrade_pool.add_item_with_rarity(upgrade_sword_damage)
 	
 	upgrade_pool.add_item_with_rarity(upgrade_player_speed)
+	upgrade_pool.add_item_with_rarity(upgrade_player_health)
 	
 	experience_manager.level_up.connect(on_level_up)
 
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_axe.id:
-		upgrade_pool.add_item(upgrade_axe_damage, 10)
+		upgrade_pool.add_item_with_rarity(upgrade_axe_damage)
+		upgrade_pool.add_item_with_rarity(upgrade_axe_double)
 		
+	elif chosen_upgrade.id == upgrade_anvil.id:
+		upgrade_pool.add_item_with_rarity(upgrade_anvil_count)
 
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []

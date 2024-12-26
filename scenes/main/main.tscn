@@ -50,6 +50,12 @@ y_sort_enabled = true
 [node name="ExperienceVial" parent="Entities" instance=ExtResource("11_uq3a5")]
 position = Vector2(401, 173)
 
+[node name="ExperienceVial2" parent="Entities" instance=ExtResource("11_uq3a5")]
+position = Vector2(396, 146)
+
+[node name="ExperienceVial3" parent="Entities" instance=ExtResource("11_uq3a5")]
+position = Vector2(423, 147)
+
 [node name="Player" parent="Entities" node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_1l16g")]
 unique_name_in_owner = true
 position = Vector2(326, 180)

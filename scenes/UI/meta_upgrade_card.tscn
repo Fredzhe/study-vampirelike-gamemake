@@ -124,7 +124,7 @@ border_width_bottom = 2
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [node name="MetaUpgradeCard" type="PanelContainer" groups=["meta_upgrade_card"]]
-custom_minimum_size = Vector2(150, 180)
+custom_minimum_size = Vector2(190, 240)
 offset_right = 120.0
 offset_bottom = 160.0
 pivot_offset = Vector2(60, 80)
@@ -148,7 +148,7 @@ theme_override_constants/margin_bottom = 6
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
 [node name="DescribeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -175,13 +175,15 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.277342, 0.308277, 0.460637, 1)
 theme_override_colors/font_outline_color = Color(0.277342, 0.308277, 0.460637, 1)
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 16
 text = "这是永久升级卡的内容"
 autowrap_mode = 2
 
 [node name="PurchaseContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
+size_flags_vertical = 10
+theme_override_constants/separation = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PurchaseContainer"]
 layout_mode = 2
@@ -246,4 +248,5 @@ text = "50/100"
 [node name="PurchaseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("14_rcy4p")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 8
 text = "购买"

@@ -4,9 +4,7 @@ extends Node
 @export var sprite: Sprite2D
 @export var hit_flash_material: ShaderMaterial
 
-var hit_flash_tween = Tween.new()
-
-
+var hit_flash_tween: Tween
 
 func _ready():
 	health_component.health_decreased.connect(on_health_decreased)

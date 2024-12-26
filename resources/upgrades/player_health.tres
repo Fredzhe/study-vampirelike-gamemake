@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dufm1palsdkw0"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_tegn5"]
+
+[resource]
+script = ExtResource("1_tegn5")
+id = "player_health"
+max_quantity = 3
+rarity = "稀有"
+name = "生命之心"
+description = "玩家的生命上限提高5点"
